@@ -1,0 +1,88 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "paths": {
+      "@flight-demo/domain/boarding": ["./libs/domain/boarding/src/index.ts"],
+      "@flight-demo/domain/booking": ["./libs/domain/booking/src/index.ts"],
+      "@flight-demo/domain/booking-api-boarding": [
+        "./libs/domain/booking/src/lib/api-boarding/api.ts"
+      ],
+      "@flight-demo/domain/checkin": ["./libs/domain/checkin/src/index.ts"],
+      "@flight-demo/shared/core": ["./libs/shared/core/src/index.ts"],
+      "@flight-demo/shared/navigation": ["./libs/shared/navigation/src/index.ts"],
+      "@flight-demo/shared/state": ["./libs/shared/state/src/index.ts"],
+      "@flight-demo/shared/ai-integration": ["./libs/shared/ai-integration/src/index.ts"],
+      "@flight-demo/shared/ai-integration/config": ["./libs/shared/ai-integration/config/index.ts"],
+      "@flight-demo/domain/booking/catalog": ["./libs/domain/booking/catalog/index.ts"],
+      "@flight-demo/domain/booking/ai": ["./libs/domain/booking/ai/index.ts"]
+    },
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "strict": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/shell/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/shell/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/domain/booking/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/domain/booking/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/domain/boarding/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/domain/boarding/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/domain/checkin/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/domain/checkin/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/core/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/shared/core/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/navigation/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/shared/navigation/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/state/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/shared/state/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/ai-integration/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/shared/ai-integration/tsconfig.spec.json"
+    }
+  ]
+}

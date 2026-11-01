@@ -1,11 +1,12 @@
 {
-  "name": "@flight-demo/shared/navigation",
+  "name": "navigation",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^22.1.0",
-    "@angular/core": "^22.1.0",
-    "@angular/router": "~22.2.2"
+    "@angular/core": "^22.1.0"
   },
-  "sideEffects": false,
-  "private": true
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }

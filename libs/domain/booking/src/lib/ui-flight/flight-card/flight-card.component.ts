@@ -1,65 +1,89 @@
-import { DatePipe, NgStyle } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, computed, input, model, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { injectCdBlink } from '@flight-demo/shared/core';
 import { Flight } from '../../logic-flight/model/flight';
-
+import { departureTime as formatDepartureTime } from '../../logic-flight/model/flight-presentation';
 
 @Component({
   selector: 'app-flight-card',
-  imports: [
-    NgStyle, DatePipe,
-    RouterLink
-  ],
+  imports: [RouterLink],
+  styleUrl: './flight-card.component.css',
   template: `
-    <div
-      class="card"
-      [ngStyle]="{ 'background-color': selected ? 'rgb(204, 197, 185)' : 'white' }"
-    >
+    <div class="card" [style.background-color]="selected() ? 'rgb(204, 197, 185)' : 'white'">
       <div class="card-header">
-        <h2 class="card-title">{{ item?.from }} - {{ item?.to }}</h2>
+        <h2 class="card-title">{{ item()?.from }} - {{ item()?.to }}</h2>
       </div>
 
       <div class="card-body">
-        <p>Flight-No.: {{ item?.id }}</p>
-        <p>Date: {{ item?.date | date : "dd.MM.yyyy HH:mm" }}</p>
+        <p>Flight-No.: {{ item()?.id }}</p>
+        @if (departureTime(); as departure) {
+          <p>Departure: {{ departure.display }}</p>
+        }
         <p>
-          <button
-            (click)="toggleSelection()"
-            class="btn btn-info btn-sm"
-            style="min-width: 85px; margin-right: 5px"
-          >{{ selected ? "Remove" : "Select" }}</button>
-          <a
-            [routerLink]="['../edit', item?.id]"
-            class="btn btn-success btn-sm"
-            style="min-width: 85px; margin-right: 5px"
-          >Edit</a>
-          <button
-            (click)="delay()"
-            class="btn btn-danger btn-sm"
-            style="min-width: 85px; margin-right: 5px"
-          >Delay</button>
+          @if (allowSelection()) {
+            <button
+              type="button"
+              [attr.aria-pressed]="selected() ? 'true' : 'false'"
+              (click)="toggleSelection()"
+              class="btn btn-info btn-sm"
+              style="min-width: 85px; margin-right: 5px"
+            >
+              {{ selected() ? 'Remove' : 'Select' }}
+            </button>
+          }
+          @if (allowEdit()) {
+            <a
+              [routerLink]="editLink() ?? ['../edit', item()?.id]"
+              class="btn btn-success btn-sm"
+              style="min-width: 85px; margin-right: 5px"
+              >Edit</a
+            >
+          }
+          @if (allowDelay()) {
+            <button
+              type="button"
+              (click)="delay()"
+              class="btn btn-danger btn-sm"
+              style="min-width: 85px; margin-right: 5px"
+            >
+              Delay
+            </button>
+          }
+          <ng-content />
         </p>
       </div>
     </div>
 
     <!-- {{ blink() }} -->
-  `
+  `,
 })
 export class FlightCardComponent {
-  blink = injectCdBlink();
+  readonly item = input<Flight>();
+  readonly selected = model(false);
+  readonly allowSelection = input(true);
+  readonly editLink = input<readonly (string | number)[]>();
+  readonly allowDelay = input(true);
+  readonly allowEdit = input(true);
 
-  @Input() item?: Flight;
-  @Input() selected = false;
-  @Output() selectedChange = new EventEmitter<boolean>();
-  @Output() delayTrigger = new EventEmitter<Flight>();
+  readonly delayTrigger = output<Flight>();
+
+  protected readonly departureTime = computed(() => {
+    const flight = this.item();
+
+    return flight ? formatDepartureTime(flight) : undefined;
+  });
+
+  protected readonly blink = injectCdBlink();
 
   toggleSelection(): void {
-    this.selected = !this.selected;
-    this.selectedChange.emit(this.selected);
+    this.selected.update((selected) => !selected);
   }
 
   delay(): void {
-    this.delayTrigger.emit(this.item);
+    const flight = this.item();
+
+    if (flight) {
+      this.delayTrigger.emit(flight);
+    }
   }
 }

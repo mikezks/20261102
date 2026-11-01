@@ -1,4 +1,3 @@
-
 export interface Flight {
   id: number;
   from: string;
@@ -12,5 +11,5 @@ export const initialFlight: Flight = {
   from: '',
   to: '',
   date: '',
-  delayed: false
+  delayed: false,
 };

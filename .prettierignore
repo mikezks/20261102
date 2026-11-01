@@ -1,7 +1,7 @@
-# Add files here to ignore them from prettier formatting
-/dist
-/coverage
-/.nx/cache
-/.nx/workspace-data
-package-lock.json
+node_modules
+dist
+.mastra
 .angular
+apps/mcp-server/dist
+docs/agu/originals
+package-lock.json

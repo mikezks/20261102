@@ -1,0 +1,7 @@
+# For Codex hosts that load trusted project configuration. Start Codex in this root.
+# Cloud sessions must verify actual native tool availability; see docs/angular-ai-setup.md.
+[mcp_servers.angular-cli]
+command = "node"
+args = ["tools/angular-ai/server.mjs"]
+startup_timeout_sec = 30
+tool_timeout_sec = 300

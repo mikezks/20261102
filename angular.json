@@ -1,0 +1,391 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "shell": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/shell",
+      "sourceRoot": "apps/shell/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "apps/shell/src/main.ts",
+            "tsConfig": "apps/shell/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/shell/public"
+              }
+            ],
+            "styles": [
+              "@angular-architects/paper-design/assets/css/bootstrap.css",
+              "apps/shell/src/styles.scss"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1MB",
+                  "maximumError": "2.6MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "10kB",
+                  "maximumError": "12kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "shell:build:production"
+            },
+            "development": {
+              "buildTarget": "shell:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "proxy.conf.mjs"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["apps/shell/**/*.ts", "apps/shell/**/*.html"],
+            "eslintConfig": "apps/shell/eslint.config.js"
+          }
+        }
+      }
+    },
+    "booking": {
+      "projectType": "library",
+      "root": "libs/domain/booking",
+      "sourceRoot": "libs/domain/booking/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/domain/booking/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/domain/booking/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "project": "libs/domain/booking/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/domain/booking/tsconfig.spec.json",
+            "buildTarget": "shell:build:development",
+            "include": ["libs/domain/booking/src/**/*.spec.ts"]
+          }
+        }
+      }
+    },
+    "boarding": {
+      "projectType": "library",
+      "root": "libs/domain/boarding",
+      "sourceRoot": "libs/domain/boarding/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/domain/boarding/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/domain/boarding/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "project": "libs/domain/boarding/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/domain/boarding/tsconfig.spec.json",
+            "buildTarget": "shell:build:development",
+            "include": ["libs/domain/boarding/src/**/*.spec.ts"]
+          }
+        }
+      }
+    },
+    "checkin": {
+      "projectType": "library",
+      "root": "libs/domain/checkin",
+      "sourceRoot": "libs/domain/checkin/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/domain/checkin/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/domain/checkin/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "project": "libs/domain/checkin/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/domain/checkin/tsconfig.spec.json",
+            "buildTarget": "shell:build:development",
+            "include": ["libs/domain/checkin/src/**/*.spec.ts"]
+          }
+        }
+      }
+    },
+    "core": {
+      "projectType": "library",
+      "root": "libs/shared/core",
+      "sourceRoot": "libs/shared/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "project": "libs/shared/core/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/shared/core/tsconfig.spec.json",
+            "buildTarget": "shell:build:development",
+            "include": ["libs/shared/core/src/**/*.spec.ts"]
+          }
+        }
+      }
+    },
+    "navigation": {
+      "projectType": "library",
+      "root": "libs/shared/navigation",
+      "sourceRoot": "libs/shared/navigation/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/navigation/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/navigation/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "project": "libs/shared/navigation/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/shared/navigation/tsconfig.spec.json",
+            "buildTarget": "shell:build:development",
+            "include": ["libs/shared/navigation/src/**/*.spec.ts"]
+          }
+        }
+      }
+    },
+    "state": {
+      "projectType": "library",
+      "root": "libs/shared/state",
+      "sourceRoot": "libs/shared/state/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/state/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/state/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "project": "libs/shared/state/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/shared/state/tsconfig.spec.json",
+            "buildTarget": "shell:build:development",
+            "include": ["libs/shared/state/src/**/*.spec.ts"]
+          }
+        }
+      }
+    },
+    "ai-integration": {
+      "projectType": "library",
+      "root": "libs/shared/ai-integration",
+      "sourceRoot": "libs/shared/ai-integration/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/ai-integration/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/ai-integration/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "project": "libs/shared/ai-integration/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/shared/ai-integration/tsconfig.spec.json",
+            "buildTarget": "shell:build:development",
+            "include": ["libs/shared/ai-integration/src/**/*.spec.ts"]
+          }
+        }
+      }
+    },
+    "simple-client": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "none",
+          "skipTests": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "demos/simple-client",
+      "sourceRoot": "demos/simple-client/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "demos/simple-client/src/main.ts",
+            "tsConfig": "demos/simple-client/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "demos/simple-client/public"
+              }
+            ],
+            "styles": [
+              "node_modules/@copilotkit/angular/dist/styles.css",
+              "demos/simple-client/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "port": 4300
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "simple-client:build:production"
+            },
+            "development": {
+              "buildTarget": "simple-client:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demos/simple-client/**/*.ts",
+              "demos/simple-client/**/*.html"
+            ],
+            "eslintConfig": "demos/simple-client/eslint.config.js"
+          }
+        }
+      }
+    }
+  }
+}

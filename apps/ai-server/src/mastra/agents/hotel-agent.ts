@@ -1,0 +1,18 @@
+import { Agent } from '@mastra/core/agent';
+import { Memory } from '@mastra/memory';
+
+import { defaultOptions, model } from '../config.js';
+import { findHotelsTool } from '../tools/find-hotels.js';
+import { hotelAgentPrompt } from './hotel-agent.prompt.js';
+
+export const hotelAgent = new Agent({
+  id: 'hotelAgent',
+  name: 'Flight42 Hotel Agent',
+  instructions: hotelAgentPrompt,
+  model,
+  defaultOptions,
+  tools: {
+    findHotelsTool,
+  },
+  memory: new Memory(),
+});

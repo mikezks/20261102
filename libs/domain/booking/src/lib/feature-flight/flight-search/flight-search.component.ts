@@ -1,64 +1,41 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Flight } from '../../logic-flight/model/flight';
+import { BookingStore } from '../../logic-flight/state/booking.store';
 import { FlightFilter } from '../../logic-flight/model/flight-filter';
-import { injectTicketsFacade } from '../../logic-flight/state/facade';
 import { FlightCardComponent } from '../../ui-flight/flight-card/flight-card.component';
 import { FlightFilterComponent } from '../../ui-flight/flight-filter/flight-filter.component';
-
 
 @Component({
   // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection -- preserves the workshop's pre-v22 behavior
   changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-flight-search',
-  imports: [
-    CommonModule,
-    FormsModule,
-    FlightCardComponent,
-    FlightFilterComponent
-  ],
+  imports: [JsonPipe, FlightCardComponent, FlightFilterComponent],
   templateUrl: './flight-search.component.html',
 })
 export class FlightSearchComponent {
-  private ticketsFacade = injectTicketsFacade();
+  private store = inject(BookingStore);
 
-  protected filter = {
-    from: 'Paris',
-    to: 'New York',
-    urgent: false
-  };
-  protected basket: Record<number, boolean> = {
-    3: true,
-    5: true
-  };
-  protected flights$ = this.ticketsFacade.flights$;
+  protected filter = this.store.filter;
+  protected flights = this.store.flightEntities;
+  protected basket = this.store.basket;
+  protected loading = this.store.loading;
+  protected error = this.store.error;
+  protected selectedFlights = this.store.selectedFlights;
 
   protected search(filter: FlightFilter): void {
-    this.filter = filter;
-
-    if (!this.filter.from || !this.filter.to) {
-      return;
-    }
-
-    this.ticketsFacade.search(this.filter);
+    this.store.updateFilter(filter.from, filter.to, filter.urgent);
   }
 
   protected delay(flight: Flight): void {
-    const oldFlight = flight;
-    const oldDate = new Date(oldFlight.date);
+    this.store.delay(flight.id);
+  }
 
-    const newDate = new Date(oldDate.getTime() + 1000 * 60 * 5); // Add 5 min
-    const newFlight = {
-      ...oldFlight,
-      date: newDate.toISOString(),
-      delayed: true
-    };
-
-    this.ticketsFacade.update(newFlight);
+  protected updateBasket(flightId: number, selected: boolean): void {
+    this.store.updateBasket(flightId, selected);
   }
 
   protected reset(): void {
-    this.ticketsFacade.reset();
+    this.store.reset();
   }
 }

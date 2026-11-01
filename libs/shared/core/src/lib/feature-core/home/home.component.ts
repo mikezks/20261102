@@ -9,17 +9,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="card">
       <div class="card-header">
-        <h2 class="card-title">Modern Angular: Architecture</h2>
+        <h2 class="card-title">Agentic UI</h2>
       </div>
 
       <div class="card-body">
         <ul>
-          <li>Signals</li>
-          <li>Signal Forms</li>
-          <li>Enterprise State Management</li>
-          <li>Domain-driven Design</li>
-          <li>Micro Frontends</li>
-          <li>... and much more!</li>
+          <li>AG-UI</li>
+          <li>A2UI</li>
+          <li>MCP Apps</li>
+          <li>Human in the Loop</li>
+          <li>Guardrails</li>
+          <li>Agent Patterns</li>
+          <li>Image &amp; Voice</li>
         </ul>
       </div>
     </div>

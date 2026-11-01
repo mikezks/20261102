@@ -1,5 +1,4 @@
-
-export type FlightFilter = {
+export interface FlightFilter {
   from: string;
   to: string;
   urgent: boolean;
@@ -8,5 +7,5 @@ export type FlightFilter = {
 export const initialFlightFilter: FlightFilter = {
   from: '',
   to: '',
-  urgent: false
+  urgent: false,
 };

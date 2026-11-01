@@ -1,0 +1,142 @@
+<div class="card page-title-card">
+  <div class="card-header">
+    <h2 class="card-title">Reporting</h2>
+  </div>
+  <div class="card-body"></div>
+</div>
+
+<div class="card">
+  <form class="card-body prompt-form" (submit)="$event.preventDefault(); submit()">
+    <textarea
+      class="form-control prompt-input"
+      [(ngModel)]="message"
+      name="prompt"
+      aria-label="Describe your request"
+      rows="5"
+      placeholder="Describe your chart..."
+    ></textarea>
+
+    <div class="prompt-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="chat().isRunning()">Generate</button>
+      <button
+        type="button"
+        class="btn btn-default"
+        [disabled]="chat().isRunning()"
+        (click)="useExamplePrompt(0)"
+      >
+        Example #1
+      </button>
+      <button
+        type="button"
+        class="btn btn-default"
+        [disabled]="chat().isRunning()"
+        (click)="useExamplePrompt(1)"
+      >
+        Example #2
+      </button>
+    </div>
+  </form>
+</div>
+
+@if (chat().isRunning() || allToolCalls().length > 0) {
+  <div class="tool-status">
+    <span class="tool-status-text">{{ currentStatus() }}</span>
+    @if (chat().isRunning()) {
+      <div class="ai-wait-indicator tool-status-dots" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    }
+    @if (allToolCalls().length > 0) {
+      <button type="button" class="tool-status-toggle" (click)="toggleToolDetails()">
+        {{ showToolDetails() ? 'Less' : 'More' }}
+      </button>
+    }
+  </div>
+}
+
+@if (showToolDetails() && allToolCalls().length > 0) {
+  <div class="tool-details-layer" role="dialog" aria-label="Tool call details">
+    <header class="tool-details-header">
+      <h2>Tool calls</h2>
+      <button type="button" class="btn btn-default btn-sm tool-details-close" (click)="toggleToolDetails()">Less</button>
+    </header>
+    <ol class="tool-details-list">
+      @for (toolCall of allToolCalls(); track toolCall.id) {
+        <li class="tool-details-item" [attr.data-status]="toolCall.status">
+          <div class="tool-details-item-head">
+            <span class="tool-details-name">{{ toolCall.name }}</span>
+            <span class="tool-details-status">{{ toolCall.status }}</span>
+          </div>
+          @if (formatToolArgs(toolCall.args); as argsText) {
+            @if (argsText.length > 0) {
+              <pre class="tool-details-args" tabindex="0">{{ argsText }}</pre>
+            }
+          }
+        </li>
+      }
+    </ol>
+  </div>
+}
+
+@if (errorMessage(); as error) {
+  <p class="alert alert-danger" role="alert">{{ error }}</p>
+}
+
+@if (hasChart()) {
+  <section class="card card-chart">
+    <div class="card-header">
+      <h2 class="card-title">{{ chartTitle() || 'Flight report' }}</h2>
+    </div>
+    <div class="card-body">
+      <div class="chart-wrapper">
+        <canvas #chart role="img" [attr.aria-label]="chartTitle() || 'Flight report'"></canvas>
+      </div>
+
+      <table class="table">
+        <caption>
+          {{
+            chartTitle()
+          }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Label</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of chartData(); track $index) {
+            <tr>
+              <th scope="row">{{ item.name }}</th>
+              <td>{{ item.value }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      @if (assistantMessage(); as text) {
+        <p class="mt-20">{{ text }}</p>
+      }
+
+      <section class="code-details">
+        <button
+          type="button"
+          class="btn btn-default btn-sm code-details-toggle"
+          [attr.aria-expanded]="showCodeDetails()"
+          (click)="toggleCodeDetails()"
+        >
+          {{ showCodeDetails() ? 'Hide details' : 'Details' }}
+        </button>
+
+        @if (showCodeDetails()) {
+          @if (latestJavaScriptCode(); as code) {
+            <pre class="code-details-block" tabindex="0"><code>{{ code }}</code></pre>
+          } @else {
+            <p class="code-details-empty">No generated JavaScript code found for this run.</p>
+          }
+        }
+      </section>
+    </div>
+  </section>
+}

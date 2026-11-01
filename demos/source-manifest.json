@@ -1,0 +1,187 @@
+{
+  "repository": "https://github.com/angular-architects/flights42",
+  "ref": "AGU-ag-ui-starter",
+  "commit": "0e459deb0279073318b0f2766deddbba656984e1",
+  "files": {
+    "demos/ag-ui-simple/agent.ts": {
+      "source": "ag-ui-simple/agent.ts",
+      "sha256": "8841ad7e405144b1a670c3a6714e64e774bfdbdd16ecc51ae5d2a97eb912cfc5"
+    },
+    "demos/ag-ui-simple/index.ts": {
+      "source": "ag-ui-simple/index.ts",
+      "sha256": "529b07ba3a34ba43d5519ade5e839cd2a241abcf3f4694608d4a34966f554eca"
+    },
+    "demos/ag-ui-simple/show-weather-tool.ts": {
+      "source": "ag-ui-simple/show-weather-tool.ts",
+      "sha256": "c42266c083c67f3b3ef4006630020d4b4db646589dbee644b9836a63ebe1dd39"
+    },
+    "demos/ag-ui-simple/tsconfig.json": {
+      "source": "ag-ui-simple/tsconfig.json",
+      "sha256": "80a240bc5a634f6642e4a8b77ca48c534af440258eba8f9e83973b4f45f25a10"
+    },
+    "demos/ag-ui-simple/utils.ts": {
+      "source": "ag-ui-simple/utils.ts",
+      "sha256": "297812b38141f74a70f52eaf0a0184674cf30fb3f3d96ad600da40c1b47d8241"
+    },
+    "demos/ag-ui-simple/weather-tool-agent.ts": {
+      "source": "ag-ui-simple/weather-tool-agent.ts",
+      "sha256": "090d0cf513b50bece0c58d870f152171708c8daa22e74b26b3f225e3ee013a20"
+    },
+    "demos/ag-ui-simple/with-tools.ts": {
+      "source": "ag-ui-simple/with-tools.ts",
+      "sha256": "8c73cc367318cc7144164d456fb23bb907909003aed42219ac6fd1e0b0d675a3"
+    },
+    "demos/ai-demo/client/index.ts": {
+      "source": "ai-demo/client/index.ts",
+      "sha256": "02c9ed101f4d25f0e2a57ca04047ec445651edd16c3dff4a05ae8ce1e19b1fef"
+    },
+    "demos/ai-demo/client/input.ts": {
+      "source": "ai-demo/client/input.ts",
+      "sha256": "9d9aba3065c3d6a2402c66fdb64bd8788f05f5dd0240e7ef79b3635f14b3256a"
+    },
+    "demos/ai-demo/client/tsconfig.json": {
+      "source": "ai-demo/client/tsconfig.json",
+      "sha256": "80a240bc5a634f6642e4a8b77ca48c534af440258eba8f9e83973b4f45f25a10"
+    },
+    "demos/ai-demo/client/utils.ts": {
+      "source": "ai-demo/client/utils.ts",
+      "sha256": "7a25eaf5e3d33397bce6a1c175f815701b7414b0c1537202ad2a930c80a8fd0b"
+    },
+    "demos/ai-demo/server/agent.ts": {
+      "source": "ai-demo/server/agent.ts",
+      "sha256": "a9f20ac208807b847c8a1cbc8737d2127ca89481dabff347826057c6384a832c"
+    },
+    "demos/ai-demo/server/chat-route.ts": {
+      "source": "ai-demo/server/chat-route.ts",
+      "sha256": "f9b3ed9ea1741093ce48b9429b74ca4fb2f5ad8b8ce4b61fdf799e431e6a0a42"
+    },
+    "demos/ai-demo/server/index.ts": {
+      "source": "ai-demo/server/index.ts",
+      "sha256": "ec4de38709bfc9a36fc3e7b0e17c38747a304c7bed526246bfff2dc502fd8c5d"
+    },
+    "demos/ai-demo/server/tsconfig.json": {
+      "source": "ai-demo/server/tsconfig.json",
+      "sha256": "80a240bc5a634f6642e4a8b77ca48c534af440258eba8f9e83973b4f45f25a10"
+    },
+    "demos/ai-demo/server/weather-api.ts": {
+      "source": "ai-demo/server/weather-api.ts",
+      "sha256": "aba3b96cc66068ade750a901b09a54e6ae871e5479393308574b2e689fda8442"
+    },
+    "demos/ai-demo/server/weather-tool.ts": {
+      "source": "ai-demo/server/weather-tool.ts",
+      "sha256": "ed38cf6644f02cf061de20db7fbd664539c81c094b63b55cb8c9d5d383392d34"
+    },
+    "demos/mcp-apps-demo/app-rendering.ts": {
+      "source": "mcp-apps-demo/app-rendering.ts",
+      "sha256": "d875317f7541a25e322a7bdae94dba3b9b02d3efccd769d8542aa528d5de28e5"
+    },
+    "demos/mcp-apps-demo/app.html": {
+      "source": "mcp-apps-demo/app.html",
+      "sha256": "d53c6d77eaaf4f91f768b9fa38f08bdac5dd4930678eea7be2285aa710669397"
+    },
+    "demos/mcp-apps-demo/app.ts": {
+      "source": "mcp-apps-demo/app.ts",
+      "sha256": "a421f677dfd6f0a611803fbf35cf49d5ebe76d762536aab71931e2f840aad162"
+    },
+    "demos/mcp-apps-demo/host.html": {
+      "source": "mcp-apps-demo/host.html",
+      "sha256": "c0c7a957cfa8955f5e6fc86b73fcffcab5cc2f327319b26d5c2555d3d1ba041d"
+    },
+    "demos/mcp-apps-demo/host.ts": {
+      "source": "mcp-apps-demo/host.ts",
+      "sha256": "333b19de025af461d71436213a5d5307420add81abf5918e8375aa56bf8bcc7a"
+    },
+    "demos/mcp-apps-demo/public/hotel-icon.svg": {
+      "source": "mcp-apps-demo/public/hotel-icon.svg",
+      "sha256": "b4ed3d22d9b462ac108d518f6bc71455d273fb9e2ef01044e82a05efc1486a01"
+    },
+    "demos/mcp-apps-demo/vite.config.ts": {
+      "source": "mcp-apps-demo/vite.config.ts",
+      "sha256": "ef14ac658cbde6e23dc3f61cd394c6d2047bed0a36a16c0d02d69291a122317d"
+    },
+    "demos/simple-client/eslint.config.js": {
+      "source": "projects/simple-client/eslint.config.js",
+      "sha256": "6fa93fef25def9c77bb111628c07ce55d26cbceb1b1e3688b5c3d2db89150eae"
+    },
+    "demos/simple-client/public/favicon.ico": {
+      "source": "projects/simple-client/public/favicon.ico",
+      "sha256": "f9102be80297c0529207607be5277b4f90bca89d65988fa1771b91c7894e815f"
+    },
+    "demos/simple-client/src/app/app.config.ts": {
+      "source": "projects/simple-client/src/app/app.config.ts",
+      "sha256": "3e521aa910254f4fa72214cdc8c5f733c5a5e59129d42e879ca0256ef920674b"
+    },
+    "demos/simple-client/src/app/app.css": {
+      "source": "projects/simple-client/src/app/app.css",
+      "sha256": "e488547e672642388c13a8285ac4cb6aca123290ee06601612b0b232f630c744"
+    },
+    "demos/simple-client/src/app/app.html": {
+      "source": "projects/simple-client/src/app/app.html",
+      "sha256": "120cb77fdb8d7a0248cb135872c8f7702f64898ce461b8dbf943b50f2d739a87"
+    },
+    "demos/simple-client/src/app/app.ts": {
+      "source": "projects/simple-client/src/app/app.ts",
+      "sha256": "0a942253188e3bf183420343ae6f50e20697e6d6984f3a1c7681569728dd339d"
+    },
+    "demos/simple-client/src/index.html": {
+      "source": "projects/simple-client/src/index.html",
+      "sha256": "fbdd5296872bbf8bee37706432ab195e5e1965b81df8055618dcf8e52204f7bb"
+    },
+    "demos/simple-client/src/main.ts": {
+      "source": "projects/simple-client/src/main.ts",
+      "sha256": "ff6df9df43fbd343c93e928ccdf7df2457510b1761fd1e38aa3a346279195158"
+    },
+    "demos/simple-client/src/styles.css": {
+      "source": "projects/simple-client/src/styles.css",
+      "sha256": "afaa1a16df83f049f2edf73ffe8f5635895b75419cf12bc53a7821ea6fa44e93"
+    },
+    "demos/simple-client/tsconfig.app.json": {
+      "source": "projects/simple-client/tsconfig.app.json",
+      "sha256": "0b7b633f456a5c86fdbaad925ec183e8c3b6a2bb30f3a63de9638e36216300bb"
+    },
+    "demos/voice-demo/index.html": {
+      "source": "voice-demo/index.html",
+      "sha256": "cb56501d8632189d3bbb544dddeda9f880cc2948e59045d352ea812b030de4c8"
+    },
+    "demos/voice-demo/src/dictation-ui.ts": {
+      "source": "voice-demo/src/dictation-ui.ts",
+      "sha256": "35dcdd93a6db9182647d229a627306d65a7049a36e46ff33eee2e78e7dc678a8"
+    },
+    "demos/voice-demo/src/dictation.ts": {
+      "source": "voice-demo/src/dictation.ts",
+      "sha256": "0ab1904e244034de28a8fb848d610e9bc9f202bacd853754f69f1da5629af6aa"
+    },
+    "demos/voice-demo/src/lookup-ui.ts": {
+      "source": "voice-demo/src/lookup-ui.ts",
+      "sha256": "0630130c0a3f834c5ba6d0df65429cf28c8cfe77f52e659c6b65a492bfd9c040"
+    },
+    "demos/voice-demo/src/lookup.ts": {
+      "source": "voice-demo/src/lookup.ts",
+      "sha256": "38d9b3eafa8c71b12e5c435062f66b8394bec2b5fffee9a7913765a7828a1190"
+    },
+    "demos/voice-demo/src/reading-ui.ts": {
+      "source": "voice-demo/src/reading-ui.ts",
+      "sha256": "ba5622a0a4f7ea3e580419c6357f8360cd5f7490f1a79c4b922e0e3ce9e88c3b"
+    },
+    "demos/voice-demo/src/reading.ts": {
+      "source": "voice-demo/src/reading.ts",
+      "sha256": "d6357c4a385e2c1ba3c5c9e6cfaaa9a5bc9b0ac66e78fb90761d330f23761bf3"
+    },
+    "demos/voice-demo/src/speech.d.ts": {
+      "source": "voice-demo/src/speech.d.ts",
+      "sha256": "afdea0bbd4ec8fd8967e320b4a1598a139da8f97bff69b5f6d859c7b98eabd62"
+    },
+    "demos/voice-demo/src/ui.ts": {
+      "source": "voice-demo/src/ui.ts",
+      "sha256": "e633ba208d940c07912f5d1a06e2f703c66be42ebb2b7158f8073c3f29bfa98a"
+    },
+    "demos/voice-demo/src/voice-quality.ts": {
+      "source": "voice-demo/src/voice-quality.ts",
+      "sha256": "428fc401c5b98eabf44c298d49fdc378d5c20d1c3a67863fcddb8c5e9ef52c47"
+    },
+    "demos/voice-demo/tsconfig.json": {
+      "source": "voice-demo/tsconfig.json",
+      "sha256": "cd9bdf75d8b15d3c70099be08415d7e383505dcaa69cbf9990c3a0e8dd7d2685"
+    }
+  }
+}

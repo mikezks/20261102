@@ -1,11 +1,12 @@
 {
-  "name": "@flight-demo/shared/state",
+  "name": "state",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/core": "^22.1.0",
-    "@ngrx/router-store": "^22.0.1",
-    "@ngrx/store": "^22.0.1"
+    "@angular/common": "^22.1.0",
+    "@angular/core": "^22.1.0"
   },
-  "sideEffects": false,
-  "private": true
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }

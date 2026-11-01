@@ -1,12 +1,12 @@
-import { InjectionToken, signal } from "@angular/core";
+import { InjectionToken, signal } from '@angular/core';
 
-export type MenuItem = {
+export interface MenuItem {
   label: string;
   route: string;
   icon: string;
   open?: boolean;
   items?: MenuItem[];
-};
+}
 
 export type NavigationConfig = MenuItem[];
 
@@ -18,4 +18,7 @@ export abstract class AbstractNavigationService {
   abstract toggleMenu(menuItem: string, active?: boolean): void;
 }
 
-export type EntityState<T> = { entities: Record<string, T>, ids: string[] };
+export interface EntityState<T> {
+  entities: Record<string, T>;
+  ids: string[];
+}

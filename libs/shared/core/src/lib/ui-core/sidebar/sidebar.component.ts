@@ -1,15 +1,11 @@
-import { AsyncPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
 
 @Component({
   // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection -- preserves the workshop's pre-v22 behavior
   changeDetection: ChangeDetectionStrategy.Eager,
   selector: 'app-sidebar-cmp',
-  imports: [
-    RouterLink, RouterLinkActive,
-  ],
+  imports: [RouterLink, RouterLinkActive],
   template: `
     <div class="sidebar-wrapper">
       <div class="logo">
@@ -18,13 +14,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             <img src="angular.png" alt="Angular Logo" />
           </div>
         </a>
-        <a href="http://angulararchitects.io" class="simple-text logo-normal">
-          Flights 42
-        </a>
+        <a href="http://angulararchitects.io" class="simple-text logo-normal"> Flights 42 </a>
       </div>
 
       <ul class="nav">
-
         <li routerLinkActive="active">
           <a routerLink="home">
             <i class="icon icon-home"></i>
@@ -54,8 +47,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         </li>
 
       </ul>
-
     </div>
-  `
+  `,
 })
 export class SidebarComponent {}

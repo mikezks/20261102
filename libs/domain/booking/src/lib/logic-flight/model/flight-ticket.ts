@@ -1,5 +1,4 @@
-
-export type FlightTicket = {
+export interface FlightTicket {
   id: number;
   flightId: number;
   passengerId: number;
@@ -10,5 +9,5 @@ export const intialFlightTicket: FlightTicket = {
   id: 0,
   flightId: 0,
   passengerId: 0,
-  price: 0
+  price: 0,
 };

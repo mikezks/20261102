@@ -1,0 +1,110 @@
+<div class="card page-title-card">
+  <div class="card-header">
+    <h2 class="card-title">Travel Planner</h2>
+  </div>
+  <div class="card-body"></div>
+</div>
+
+<div class="card">
+  <form class="card-body planner-form" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-grid">
+      <label class="field">
+        <span class="field-label">From</span>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="from"
+          placeholder="e.g. Graz"
+          autocomplete="off"
+        />
+      </label>
+
+      <label class="field">
+        <span class="field-label">To</span>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="to"
+          placeholder="e.g. Rome"
+          autocomplete="off"
+        />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Duration</span>
+        <select class="form-control" formControlName="duration">
+          @for (option of durations; track option.value) {
+            <option [ngValue]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </label>
+
+      <label class="field field-wide">
+        <span class="field-label">Preferences</span>
+        <textarea
+          class="form-control"
+          formControlName="preferences"
+          rows="3"
+          placeholder="e.g. budget hotel, evening departures, 5 stars, stopover in Vienna for dinner ..."
+        ></textarea>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid || chat().isRunning()">
+        Generate Travel Plan
+      </button>
+      @if (chat().isRunning()) {
+        <button type="button" class="btn btn-default" (click)="stop()">Stop</button>
+      }
+    </div>
+  </form>
+</div>
+
+<app-travel-workflow-progress
+  [messages]="chat().messages()"
+  [loading]="chat().isRunning()"
+  [hasWidgets]="widgetCount() > 0"
+/>
+
+@if (errorMessage(); as error) {
+  <p class="alert alert-danger" role="alert">{{ error }}</p>
+}
+
+<section class="planner-output">
+  @if (planStore.summary(); as summary) {
+    <div class="card card-body planner-summary" data-widget="messageWidget">
+      <p>{{ summary }}</p>
+    </div>
+  }
+
+  @if (planStore.flights().length > 0 || planStore.hotels().length > 0) {
+    <div class="trip-grid" [class.has-hotel]="planStore.hotels().length > 0">
+      @if (planStore.flights().length > 0) {
+        <div class="flights-stack">
+          @for (flight of flights(); track flight.id) {
+            <div class="flight-cell" data-widget="flightWidget">
+              <app-flight-card
+                [item]="flight"
+                [selected]="!!booking.basket()[flight.id]"
+                [editLink]="['/booking/flight/edit', flight.id]"
+                (selectedChange)="booking.updateBasket(flight.id, $event, flight)"
+                (delayTrigger)="booking.delay($event.id, 5, $event)"
+              />
+            </div>
+          }
+        </div>
+      }
+
+      @if (planStore.hotels().length > 0) {
+        <div class="hotel-stack">
+          @for (hotel of planStore.hotels(); track hotel.id) {
+            <div class="planner-tile" data-widget="hotelWidget">
+              <app-hotel-card [hotel]="hotel" />
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</section>

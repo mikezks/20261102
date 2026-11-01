@@ -1,0 +1,37 @@
+:host {
+  display: block;
+}
+
+.card {
+  margin: 0;
+}
+
+.action-title {
+  font-weight: 600;
+}
+
+.action-context {
+  color: #4e5b78;
+}
+
+.payment-line {
+  color: #4e5b78;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+p + p {
+  margin-top: 0.5rem;
+}
+
+.status-line {
+  line-height: 1.4;
+}
+
+.error-line {
+  color: #b3261e;
+  line-height: 1.4;
+}

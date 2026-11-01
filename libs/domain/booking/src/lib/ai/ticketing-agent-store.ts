@@ -1,0 +1,44 @@
+/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
+import { inject } from '@angular/core';
+import { injectAgentStore } from '@copilotkit/angular';
+import { USE_ACTION_CARDS } from '@flight-demo/shared/ai-integration/config';
+
+import { messageWidget } from '@flight-demo/shared/ai-integration';
+import { ConfigService } from '@flight-demo/shared/ai-integration';
+import { initAgentStore } from '@flight-demo/shared/ai-integration';
+import { destinationInfoCard } from '../ui-ai/destination-info-card';
+import { flightWidget } from '../ui-ai/flight-widget';
+import { hotelWidget } from '../ui-ai/hotel-widget';
+import { bookFlightActionCard } from './action-cards/book-flight-action-card';
+import { cancelFlightActionCard } from './action-cards/cancel-flight-action-card';
+import { TICKETING_AGENT_ID } from './agent-ids';
+import { checkInTool } from './tools/check-in.tool';
+import { displayFlightDetailTool } from './tools/display-flight-detail.tool';
+import { findFlightsTool } from './tools/find-flights.tool';
+import { getCurrentBasketTool } from './tools/get-current-basket.tool';
+import { getLoadedFlightsTool } from './tools/get-loaded-flights.tool';
+import { toggleFlightSelectionTool } from './tools/toggle-flight-selection.tool';
+
+const widgets = [messageWidget, hotelWidget]; // TODO: Add flightWidget.
+
+const actionCards = USE_ACTION_CARDS ? [bookFlightActionCard, cancelFlightActionCard] : [];
+
+export function injectTicketingAgentStore() {
+  initAgentStore({
+    agentId: TICKETING_AGENT_ID,
+    url: inject(ConfigService).agUiUrlFor(TICKETING_AGENT_ID),
+    useServerMemory: true,
+    frontendTools: [
+      // TODO: Register findFlightsTool.
+      getLoadedFlightsTool,
+      toggleFlightSelectionTool,
+      getCurrentBasketTool,
+      displayFlightDetailTool,
+      checkInTool,
+    ],
+    toolCallRenderer: [...actionCards],
+    components: [...widgets, destinationInfoCard],
+  });
+
+  return injectAgentStore(TICKETING_AGENT_ID);
+}

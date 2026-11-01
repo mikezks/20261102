@@ -1,15 +1,12 @@
 {
-  "name": "@flight-demo/domain/checkin",
+  "name": "checkin",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^22.1.0",
-    "@angular/core": "^22.1.0",
-    "@angular/forms": "~22.2.2",
-    "@angular/router": "~22.2.2",
-    "rxjs": "~7.8.0",
-    "@ngrx/signals": "^22.0.1",
-    "@flight-demo/shared/navigation": "0.0.1"
+    "@angular/core": "^22.1.0"
   },
-  "sideEffects": false,
-  "private": true
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }

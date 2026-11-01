@@ -19,8 +19,11 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 
 ## Accessibility Requirements
 
-- It MUST pass all AXE checks.
+- Pass AXE checks; report the optional `page-has-heading-one` recommendation separately for the intentional routed-page H2 structure.
 - It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
+- Use real `h2` elements for routed page/card titles. Do not imitate a heading level with `h1`/`h2` typography classes.
+- Put standalone page titles in a Paper `page-title-card` with `card-header`, `h2.card-title` and an empty `card-body`; keep the title vertically centered. Use the same header structure inside content cards.
+- Reuse the Paper theme's controls and shared focus styles. Keep keyboard focus visible and avoid separate focus colors per page.
 
 ### Components
 
@@ -57,3 +60,11 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use the `providedIn: 'root'` option for singleton services
 - Prefer the `@Service` decorator over `@Injectable({providedIn: 'root'})` for new singleton services (Angular v22+)
 - Use the `inject()` function instead of constructor injection
+
+## Angular AI tooling
+
+- At the start of an Angular work phase, inspect the installed Node/Angular/CLI versions and MCP availability. Run `npm run setup:angular-ai` to verify the pinned skills, reuse valid dependencies, and probe the local CLI through MCP.
+- Read `.agents/skills/angular-developer/SKILL.md` for Angular development and tooling; read its relevant references as needed. Apply `.agents/skills/angular-new-app/SKILL.md` only when creating a new application, before scaffolding. Do not create an app or upgrade Angular just to configure tooling.
+- Check actual MCP tool names and input schemas, then call `list_projects` and `get_best_practices` using the discovered `angular.json` path. Match the installed Angular version and this CLI workspace's existing architecture.
+- If the host has not discovered the skills, load the files explicitly. If native Angular MCP is unavailable, use the script-based SDK client in `tools/angular-ai/`; keep dev-server start/wait/stop in one session and close it reliably.
+- See `docs/angular-ai-setup.md` for commands, provenance, verification and host limitations. Configuration files and ordinary shell commands alone do not prove MCP tool access.

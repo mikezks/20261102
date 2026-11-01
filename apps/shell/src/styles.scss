@@ -75,7 +75,6 @@ a {
         margin-right: 20px;
       }
     }
-
   }
 
   ul.sub-nav {
@@ -121,6 +120,38 @@ a {
         @extend .nc-icon;
         @extend .nc-send;
       }
+      &.icon-flight-search {
+        @extend .nc-icon;
+        @extend .nc-zoom-split;
+      }
+      &.icon-selected-flights {
+        @extend .nc-icon;
+        @extend .nc-single-copy-04;
+      }
+      &.icon-ticket {
+        @extend .nc-icon;
+        @extend .nc-tag-content;
+      }
+      &.icon-dashboard {
+        @extend .nc-icon;
+        @extend .nc-layout-11;
+      }
+      &.icon-hotel {
+        @extend .nc-icon;
+        @extend .nc-key-25;
+      }
+      &.icon-reporting {
+        @extend .nc-icon;
+        @extend .nc-chart-bar-32;
+      }
+      &.icon-travel-planner {
+        @extend .nc-icon;
+        @extend .nc-map-big;
+      }
+      &.icon-airport {
+        @extend .nc-icon;
+        @extend .nc-world-2;
+      }
       &.icon-passenger {
         @extend .nc-icon;
         @extend .nc-single-02;
@@ -136,6 +167,10 @@ a {
       &.icon-checkin {
         @extend .nc-icon;
         @extend .nc-tag-content;
+      }
+      &.icon-document {
+        @extend .nc-icon;
+        @extend .nc-paper;
       }
       &.icon-boarding {
         @extend .nc-icon;
@@ -165,7 +200,8 @@ a {
 
     li {
       &.active {
-        > a::before, > a::after {
+        > a::before,
+        > a::after {
           top: -4px;
         }
       }
@@ -182,5 +218,181 @@ a {
         }
       }
     }
+  }
+}
+
+/* Shared tokens for the integrated AUI widgets. */
+:root {
+  --color-background: #f4f3ef;
+  --color-white: #fff;
+  --color-black: #202b33;
+  --color-primary: #17686b;
+  --color-primary-lightest: #edf6f5;
+  --color-label: #53616b;
+  --color-error: #a32736;
+  --color-border: #ccd6dc;
+  --color-focus: #59534f;
+  --spacing-x1: 0.25rem;
+  --spacing-x2: 0.5rem;
+  --spacing-x4: 1rem;
+  --font-size: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-tiny: 0.75rem;
+  --panel-w: min(100vw, 560px);
+}
+.nav-standalone ul.nav {
+  flex-wrap: wrap;
+  opacity: 1;
+}
+.ai-error {
+  color: #8b1e2b;
+  background: #fff2f2;
+  padding: 0.75rem;
+  margin: 0;
+}
+/* Readable text on the Paper theme's alert background. */
+.alert.alert-danger {
+  color: #4b1606;
+  overflow-wrap: anywhere;
+}
+/* Balance the title header against the Paper card body's vertical padding. */
+.page-title-card .card-title {
+  margin-bottom: 0;
+}
+
+/* Readable form labels against the workshop theme’s white cards. */
+.card label,
+.form-group label {
+  color: #595959;
+}
+
+textarea.form-control {
+  padding: 10px;
+}
+
+app-chat-messages .bubble > markdown > :first-child {
+  margin-top: 0;
+}
+app-chat-messages .bubble > markdown > :last-child {
+  margin-bottom: 0;
+}
+app-chat-messages .bubble > markdown p {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* WCAG AA colors for the original Paper Dashboard controls. */
+.btn.btn-primary,
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background-color: #17686b !important;
+  border-color: #17686b;
+  color: #fff;
+}
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  background-color: #59534f;
+  border-color: #59534f;
+  color: #fff;
+}
+main a:not(.btn) {
+  color: #17686b;
+}
+:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus) !important;
+  outline-offset: 2px !important;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+.form-control:focus {
+  outline: none !important;
+  border-color: var(--color-focus);
+  box-shadow: inset 0 0 0 1px var(--color-focus);
+}
+
+/* Keep the focus indicator inside tool cards, whose contents clip at the edges. */
+:root copilot-default-tool-renderer .tool-summary {
+  min-height: 32px;
+  padding: 6px 8px;
+  border-radius: 3px;
+}
+:root copilot-default-tool-renderer .tool-summary:focus-visible {
+  outline: none !important;
+  box-shadow: inset 0 0 0 2px var(--color-focus);
+}
+
+.btn-default:active,
+.btn-default.active,
+.btn-default:focus:active {
+  background-color: #59534f !important;
+  border-color: #59534f !important;
+}
+
+/* Keep the Paper theme's active/focus rules consistent with its accessible colors. */
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:focus:active {
+  background-color: #17686b !important;
+  border-color: #17686b !important;
+}
+.btn.voice-dictation[aria-pressed='true'] {
+  background-color: #b73529 !important;
+  border-color: #b73529 !important;
+  color: #fff;
+}
+.btn.voice-dictation {
+  transition: none;
+}
+/* The bundled icon font has no microphone glyph. Match its monochrome outline style. */
+.icon-mic::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round'%3E%3Crect x='9' y='2' width='6' height='12' rx='3'/%3E%3Cpath d='M5 10v1a7 7 0 0 0 14 0v-1M12 18v4m-4 0h8'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+/* Shared waiting feedback for the assistant and AI tools. */
+.ai-wait-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 20px;
+  color: var(--color-primary);
+}
+.ai-wait-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: waiting-dot 1.2s ease-in-out infinite;
+}
+.ai-wait-indicator span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.ai-wait-indicator span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes waiting-dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-wait-indicator span {
+    animation: none;
   }
 }

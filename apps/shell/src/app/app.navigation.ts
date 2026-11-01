@@ -1,11 +1,10 @@
 import { NavigationConfig } from '@flight-demo/shared/navigation';
 
-
 export const APP_NAVIGATION: NavigationConfig = [
   {
     route: 'home',
     label: 'Home',
-    icon: 'home'
+    icon: 'home',
   },
   {
     route: 'booking',
@@ -15,16 +14,11 @@ export const APP_NAVIGATION: NavigationConfig = [
   {
     route: 'checkin',
     label: 'Checkin',
-    icon: 'checkin'
-  },
-  {
-    route: 'luggage',
-    label: 'Luggage',
-    icon: 'luggage'
+    icon: 'checkin',
   },
   {
     route: 'boarding',
     label: 'Boarding',
-    icon: 'boarding'
+    icon: 'boarding',
   },
 ];

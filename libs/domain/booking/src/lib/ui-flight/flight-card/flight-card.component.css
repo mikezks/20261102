@@ -1,0 +1,10 @@
+/* Match the theme's important interaction rules while keeping AA text contrast. */
+.btn.btn-info {
+  background-color: #17647a !important;
+}
+.btn.btn-success {
+  background-color: #21743a !important;
+}
+.btn.btn-danger {
+  background-color: #b73529 !important;
+}

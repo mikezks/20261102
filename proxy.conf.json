@@ -1,0 +1,17 @@
+{
+  "/ai/**": {
+    "target": "http://127.0.0.1:3001",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": { "^/ai": "" },
+    "timeout": 180000,
+    "proxyTimeout": 180000
+  },
+  "/mcp": { "target": "http://127.0.0.1:3002", "secure": false, "changeOrigin": true },
+  "/flight-api/**": {
+    "target": "https://demo.angulararchitects.io",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/flight-api": "/api" }
+  }
+}

@@ -3,7 +3,6 @@ import { MilesComponent } from '../feature-miles/miles/miles.component';
 import { PassengerEditComponent } from '../feature-passenger/passenger-edit/passenger-edit.component';
 import { PassengerSearchComponent } from '../feature-passenger/passenger-search/passenger-search.component';
 
-
 export const CHECKIN_ROUTES: Routes = [
   {
     path: '',

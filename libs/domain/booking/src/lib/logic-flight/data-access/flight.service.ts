@@ -3,9 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Flight } from '../model/flight';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FlightService {
   private http = inject(HttpClient);
@@ -13,7 +12,7 @@ export class FlightService {
   flights: Flight[] = [];
   private flightsCountState = new BehaviorSubject<number>(0);
   flightsCount$ = this.flightsCountState.asObservable();
-  private baseUrl = `https://demo.angulararchitects.io/api`;
+  private baseUrl = `/flight-api`;
 
   load(from: string, to: string, urgent: boolean): void {
     this.find(from, to, urgent).subscribe({
@@ -21,11 +20,7 @@ export class FlightService {
     });
   }
 
-  find(
-    from: string,
-    to: string,
-    urgent = false
-  ): Observable<Flight[]> {
+  find(from: string, to: string, urgent = false): Observable<Flight[]> {
     let url = [this.baseUrl, 'flight'].join('/');
 
     if (urgent) {
@@ -36,8 +31,8 @@ export class FlightService {
     const headers = new HttpHeaders().set('Accept', 'application/json');
 
     return this.http.get<Flight[]>(url, { params, headers }).pipe(
-      tap(flights => this.flights = flights),
-      tap(flights => this.flightsCountState.next(flights.length)),
+      tap((flights) => (this.flights = flights)),
+      tap((flights) => this.flightsCountState.next(flights.length)),
     );
   }
 

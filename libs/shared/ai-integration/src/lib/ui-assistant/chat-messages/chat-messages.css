@@ -1,0 +1,176 @@
+.msg {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.msg > div {
+  min-width: 0;
+}
+
+.ai-wait-indicator {
+  gap: 5px;
+}
+
+.ai-wait-indicator span {
+  width: 6px;
+  height: 6px;
+}
+
+.bubble.bubble--tool {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.avatar {
+  width: 32px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  font-size: 16px;
+  line-height: 1;
+  margin-top: 0;
+}
+
+.bubble {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: var(--assistant);
+  font-size: var(--font-size-sm);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  max-width: 100%;
+  width: fit-content;
+}
+
+.msg.user .bubble {
+  background: var(--assistant);
+  color: var(--text);
+}
+
+.bubble:has(> markdown) {
+  padding: 8px 12px;
+}
+
+.msg:has(> div > .bubble > markdown) > .avatar {
+  margin-top: 8px;
+}
+
+/* A2UI surfaces in the chat: theme the built-in Card & Button so they match
+ * our native ".card" and outline ".btn" look. Paddings, radii and the card
+ * shadow go through the exposed CSS variables; the card chrome and the outline
+ * button need selectors, because their variables are shared with inputs. */
+.bubble.bubble--a2ui {
+  width: 100%;
+  font-family: var(--font-family);
+
+  --a2ui-card-padding: 0.9rem 1rem;
+  --a2ui-card-shadow: none;
+  --a2ui-font-family-title: var(--font-family);
+
+  --a2ui-button-border-radius: var(--border-radius);
+  --a2ui-button-padding: 6px 16px;
+}
+
+:host ::ng-deep .bubble--a2ui copilot-a2ui-button .button {
+  margin: 0;
+  border: 1px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+:host ::ng-deep .bubble--a2ui copilot-a2ui-button .button:hover {
+  background: rgba(92, 68, 228, 0.06);
+}
+
+/* Cards fill the row: equal width (flex) and equal height (Row stretches by
+ * default, and the Card host is the card box). */
+:host ::ng-deep .bubble--a2ui copilot-a2ui-card {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: var(--color-white);
+}
+
+.meta {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+:host {
+  display: block;
+}
+
+.bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bubble > hb-render-message {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bubble > hb-render-message ::ng-deep p {
+  margin: 0;
+}
+
+copilot-render-tool-calls ::ng-deep copilot-default-tool-renderer {
+  margin: 0;
+  padding: 0;
+}
+
+copilot-render-tool-calls ::ng-deep .tool-card {
+  border: 0;
+  background: inherit;
+}
+
+.tool-call {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  width: fit-content;
+  font-size: calc(var(--font-size-sm) - 1pt);
+  line-height: 1.2;
+}
+
+.tool-call-label {
+  font-size: calc(var(--font-size-sm) - 1pt);
+  line-height: 1.2;
+}
+
+app-widget-container {
+  display: block;
+  margin: 0;
+}
+
+.interrupt-message {
+  margin: 0;
+}
+
+.interrupt-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.interrupt-actions .btn {
+  width: 100%;
+  white-space: nowrap;
+}

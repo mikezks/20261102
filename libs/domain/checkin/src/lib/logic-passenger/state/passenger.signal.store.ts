@@ -1,5 +1,6 @@
 import { inject } from '@angular/core';
-import { patchState, signalStore, type, withMethods, withState } from '@ngrx/signals';
+import { delegated } from '@flight-demo/shared/core';
+import { patchState, signalStore, type, withMethods, withProps, withState } from '@ngrx/signals';
 import { setAllEntities, withEntities } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
@@ -22,6 +23,9 @@ export const PassengerStore = signalStore(
     setFilter: (filter: PassengerFilter) => patchState(store, { filter }),
     setPassengers: (state: { passengers: Passenger[] }) => patchState(store,
       setAllEntities(state.passengers, { collection: 'passenger' })),
+  })),
+  withProps(store => ({
+    writableFilter: delegated(store.filter, store.setFilter),
   })),
   // Effects
   withMethods((

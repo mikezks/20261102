@@ -1,6 +1,5 @@
 import { ElementRef, NgZone, inject } from '@angular/core';
 
-
 export function injectCdBlink(): () => null {
   const element = inject(ElementRef);
   const zone = inject(NgZone);
@@ -10,7 +9,7 @@ export function injectCdBlink(): () => null {
     // Dirty Hack used to visualize the change detector
 
     const selectedColor = element.nativeElement.firstChild.style.backgroundColor;
-    const visualizerColor = 'crimson'
+    const visualizerColor = 'crimson';
 
     if (!active) {
       zone.runOutsideAngular(() => {
@@ -26,7 +25,7 @@ export function injectCdBlink(): () => null {
     }
 
     return null;
-  }
+  };
 
   return blink;
 }
