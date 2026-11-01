@@ -46,8 +46,8 @@ export const executeJavaScriptTool = createTool({
     rejected. CPU execution is interrupted after 30 s, with a 45 s outer deadline. It is capped at 64 MB memory and
     1 MB stack.
 
-    The tool returns \`{ data, code, title }\`; forward \`data\` and \`title\`
-    to the client \`renderChart\` tool.
+    The tool returns \`{ data, code, title }\`; the client renders \`data\` as a chart titled
+    \`title\` directly from this result.
   `,
   inputSchema: z.object({
     code: z.string().describe(

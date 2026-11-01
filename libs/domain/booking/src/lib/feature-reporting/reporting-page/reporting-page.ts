@@ -9,7 +9,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CopilotKit, type Message } from '@copilotkit/angular';
+import { CopilotKit, RenderToolCalls, type Message } from '@copilotkit/angular';
 import { Chart } from 'chart.js/auto';
 
 import { reset, stop, agentError, sendMessage } from '@flight-demo/shared/ai-integration';
@@ -28,7 +28,7 @@ interface ReportingToolCall {
 
 @Component({
   selector: 'app-reporting-page',
-  imports: [FormsModule],
+  imports: [FormsModule, RenderToolCalls],
   templateUrl: './reporting-page.html',
   styleUrl: './reporting-page.css',
 })
@@ -43,6 +43,19 @@ export class ReportingPage {
   protected readonly chartTitle = this.chartStore.title;
   protected readonly message = signal('');
   private chartInstance?: Chart;
+  protected readonly chartMessage = computed(() =>
+    this.chat()
+      .messages()
+      .filter(
+        (message): message is Extract<Message, { role: 'assistant' }> =>
+          message.role === 'assistant',
+      )
+      .filter((message) =>
+        message.toolCalls?.some((call) => call.function.name === 'executeJavaScript'),
+      )
+      .at(-1),
+  );
+
   protected readonly assistantMessage = computed<string>(() =>
     getAssistantMessage(this.chat().messages()),
   );
