@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { inject } from '@angular/core';
 import { injectAgentStore } from '@copilotkit/angular';
 import { USE_ACTION_CARDS } from '@flight-demo/shared/ai-integration/config';
@@ -36,7 +35,7 @@ export function injectTicketingAgentStore() {
       displayFlightDetailTool,
       checkInTool,
     ],
-    toolCallRenderer: [], // TODO: Register the prepared actionCards.
+    toolCallRenderer: [...actionCards],
     components: [...widgets, destinationInfoCard],
   });
 

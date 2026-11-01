@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { inject, Injectable } from '@angular/core';
 
 import { ChatRegistry } from '@flight-demo/shared/ai-integration';
@@ -23,7 +22,9 @@ export class TravelRefinementChatService {
   public reset(): void {
     reset(this.agentStore);
     const preamble = buildPreferencePreamble(this.requestStore.preferences());
-    // TODO: Add preamble as a developer message when present, without starting a run.
+    if (preamble) {
+      addDeveloperMessage(this.agentStore, preamble);
+    }
   }
 }
 

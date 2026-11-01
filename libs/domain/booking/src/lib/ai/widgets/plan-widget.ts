@@ -80,7 +80,7 @@ export class PlanWidget implements ToolRenderer<PlanWidgetArgs> {
     if (this.planSnapshot.steps.length === 0) {
       return;
     }
-    // TODO: Hand this.planSnapshot to the PlanHandoff.
+    void this.planHandoff.execute(this.planSnapshot);
   }
 }
 

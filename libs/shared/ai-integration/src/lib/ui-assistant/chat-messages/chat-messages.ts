@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { type Interrupt } from '@ag-ui/core';
 import { Component, computed, input, type Signal, signal } from '@angular/core';
 import {
@@ -81,14 +80,26 @@ export class ChatMessages {
   protected readonly messageViews = computed(() => toMessageViews(this.messages()));
 
   protected readonly approvalError = signal('');
-  // TODO: Derive the visible interrupts from the controller and resolved ids.
-  protected readonly interrupts = computed<InterruptModel[]>(() => []);
+  protected readonly interrupts = computed(() =>
+    toInterruptModels(this.interruptController().interrupts(), this.resolvedInterruptIds()),
+  );
 
   protected async resolveInterrupt(
     interruptId: string,
     payload: Record<string, unknown>,
   ): Promise<void> {
-    // TODO: Resolve the interrupt, record its id and handle errors so the user can retry.
+    this.resolvedInterruptIds.update((ids) => new Set([...ids, interruptId]));
+    this.approvalError.set('');
+    try {
+      await this.interruptController().resolve(payload, interruptId);
+    } catch (error) {
+      this.resolvedInterruptIds.update(
+        (ids) => new Set([...ids].filter((id) => id !== interruptId)),
+      );
+      this.approvalError.set(
+        error instanceof Error ? error.message : 'Approval failed. Please try again.',
+      );
+    }
   }
 }
 
