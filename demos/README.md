@@ -2,6 +2,7 @@
 
 - [Weather: server and clients](#weather-server-and-clients)
 - [AG-UI events](#ag-ui-events)
+- [A2UI Passenger Card](#a2ui-passenger-card)
 - [MCP Apps](#mcp-apps)
 - [Voice API demo](#voice-api-demo)
 - [Integrated servers](#integrated-servers)
@@ -64,6 +65,22 @@ npm run ag-ui-simple:client-tools
 
 The first shows a simulated agent's event sequence. The second demonstrates
 executing a client-side tool and returning its result to the agent.
+
+## A2UI Passenger Card
+
+```bash
+npm run a2ui-demo
+```
+
+Open <http://localhost:4301>. This standalone Angular demo renders a passenger
+card from A2UI messages, including data bindings, an action and a custom
+`MilesProgress` component. **Increase Miles** adds 300 miles to the surface's
+data model; both the passenger card and progress indicator update.
+
+The demo uses the existing CopilotKit A2UI renderer. It runs entirely in the
+browser, without an AI server, an LLM or an API key.
+
+Build it with `npm run a2ui-demo:build`.
 
 ## MCP Apps
 
@@ -146,3 +163,9 @@ are preserved byte for byte from `angular-architects/flights42`, branch
 [source-manifest.json](source-manifest.json) records the original paths and SHA-256
 checksums. Start commands and Angular workspace paths are configured at the
 repository root.
+
+The `a2ui-demo/` sources come from `projects/a2ui-demo` in the same repository,
+branch `AGU-a2ui-solution`, commit `b8f37069e9c71a5f3280f3837dbabb97977c9326`.
+Its renderer integration and CSS selectors use CopilotKit; the A2UI messages,
+passenger data and mileage calculations are preserved. The manifest records
+original checksums and checksums for adapted files separately.

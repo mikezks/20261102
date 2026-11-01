@@ -386,6 +386,104 @@
           }
         }
       }
+    },
+    "a2ui-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "demos/a2ui-demo",
+      "sourceRoot": "demos/a2ui-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "demos/a2ui-demo/src/main.ts",
+            "tsConfig": "demos/a2ui-demo/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "demos/a2ui-demo/public"
+              }
+            ],
+            "styles": [
+              "demos/a2ui-demo/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "8kB",
+                  "maximumError": "16kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "a2ui-demo:build:production"
+            },
+            "development": {
+              "buildTarget": "a2ui-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4301
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "demos/a2ui-demo/**/*.ts",
+              "demos/a2ui-demo/**/*.html"
+            ],
+            "eslintConfig": "demos/a2ui-demo/eslint.config.js"
+          }
+        }
+      }
     }
   }
 }

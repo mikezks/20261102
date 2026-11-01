@@ -41,7 +41,9 @@
     "mcp-server:app:build": "npm run build:mcp",
     "mcp-server:app:watch": "vite build --config apps/mcp-server/vite.config.mts --watch",
     "mcp-server:start": "npm run start:mcp",
-    "simple-client": "ng serve simple-client"
+    "simple-client": "ng serve simple-client",
+    "a2ui-demo": "ng serve a2ui-demo",
+    "a2ui-demo:build": "ng build a2ui-demo"
   },
   "private": true,
   "devDependencies": {

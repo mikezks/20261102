@@ -1,0 +1,17 @@
+<main class="demo-shell">
+  <section class="demo-card">
+    <h1>A2UI PassengerCard Demo</h1>
+    <p>
+      Values are resolved via <strong>data binding</strong> from the data model
+      into the surface components.
+    </p>
+
+    <copilot-a2ui-surface
+      [operations]="operations()"
+      [catalog]="catalog"
+      (action)="onAction($event)"
+    />
+
+    <p class="hint">See the A2UI event in the browser console.</p>
+  </section>
+</main>

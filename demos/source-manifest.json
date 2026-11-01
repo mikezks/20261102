@@ -182,6 +182,118 @@
     "demos/voice-demo/tsconfig.json": {
       "source": "voice-demo/tsconfig.json",
       "sha256": "cd9bdf75d8b15d3c70099be08415d7e383505dcaa69cbf9990c3a0e8dd7d2685"
+    },
+    "demos/a2ui-demo/eslint.config.js": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/eslint.config.js",
+      "sha256": "6fa93fef25def9c77bb111628c07ce55d26cbceb1b1e3688b5c3d2db89150eae"
+    },
+    "demos/a2ui-demo/public/favicon.ico": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/public/favicon.ico",
+      "sha256": "f9102be80297c0529207607be5277b4f90bca89d65988fa1771b91c7894e815f"
+    },
+    "demos/a2ui-demo/src/app/app.config.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/app.config.ts",
+      "sha256": "2843de9a8d495848230d4c01949b9efd9ad656da0c833ceef01aa3d48bbaaafd",
+      "adaptedSha256": "0d89d2482b81f6aa9605d8480e7797b8ab24229194e012eeb38f204ffb6080cd"
+    },
+    "demos/a2ui-demo/src/app/app.css": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/app.css",
+      "sha256": "cb2aabe85f2a988cc49ec482e563b034abd23a26b405f3aa0573238dd7dabe15",
+      "adaptedSha256": "2805b009061cc35f479022338b62afa9138eebbca5802522ae185f3b81cefe2a"
+    },
+    "demos/a2ui-demo/src/app/app.html": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/app.html",
+      "sha256": "3720a203804af42d5112b1873052793c7695ae487b7158210517fc4aacb04118",
+      "adaptedSha256": "b00bf15de888805350e62e221f1cd56e5d9df75c3517fc9b6228ee5a6847e5df"
+    },
+    "demos/a2ui-demo/src/app/app.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/app.ts",
+      "sha256": "27898732f681acf35dc446854f1b6a88628046557d7513e8052022fbfceb019e",
+      "adaptedSha256": "be74faef99f5f2c17999ea75329965e27f1f13e01db4a671980aa40180031ba3"
+    },
+    "demos/a2ui-demo/src/app/custom-catalog/custom-catalog.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/custom-catalog/custom-catalog.ts",
+      "sha256": "8fc8f4db85eb56b331949aa1b0075be8abd00dfcb6609b9982bfd743f910e12f",
+      "adaptedSha256": "106567da9994efa4446e01d10c1ad0a69370d76cace6986b05040a996bb6883a"
+    },
+    "demos/a2ui-demo/src/app/custom-catalog/format-id.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/custom-catalog/format-id.ts",
+      "sha256": "556b2d75a51d395a052789caab60868a6f309731b5fbec90d819012a0208dc49",
+      "adaptedSha256": "ef7d440692e56cdfa7b43bc1532dad575064dad4413c9d55beb2a89f46863697"
+    },
+    "demos/a2ui-demo/src/app/custom-catalog/miles-calc.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/custom-catalog/miles-calc.ts",
+      "sha256": "f96e637443b2060fd7010ee5b24836a591812f197a4bfeec6c44a3246c35037b"
+    },
+    "demos/a2ui-demo/src/app/custom-catalog/miles-progress-context.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/custom-catalog/miles-progress-context.ts",
+      "sha256": "ca880c5594fe3fbe0360e8922f20d6abdef572cf507341f85dff1762fea9cf38",
+      "adaptedSha256": "ff81a16258790658219771a03cc19a4d49c83b50be7510d3286e66d5e2c08e79"
+    },
+    "demos/a2ui-demo/src/app/custom-catalog/miles-progress.css": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/custom-catalog/miles-progress.css",
+      "sha256": "666b311c55b9c74f449ee672885ff50e81a14996d552f2fcbca16b1b2a212e1a"
+    },
+    "demos/a2ui-demo/src/app/custom-catalog/miles-progress.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/custom-catalog/miles-progress.ts",
+      "sha256": "b63c3a2af0fb9d64a643c435ab362c9f92f2bc1847486d9e7d6d4a3a2e769a95",
+      "adaptedSha256": "273b00549f75a823187e6a181ca954f5097021e8d241e5fd919539a8482045a9"
+    },
+    "demos/a2ui-demo/src/app/custom-catalog/utils.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/custom-catalog/utils.ts",
+      "sha256": "b8aba86977daa6ae9a7c1501a96654fcdfd2443f6b048a127fc92323777ed46f",
+      "adaptedSha256": "eb1f28522da15941a3a8ce708b1cace5d483c3ad66296f20a4ea6acaebf32722"
+    },
+    "demos/a2ui-demo/src/app/passenger-card.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/app/passenger-card.ts",
+      "sha256": "c8887644d16f0e23ef31fab3d1a1408ff7b0e574552899bec090788f9ddbd233"
+    },
+    "demos/a2ui-demo/src/index.html": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/index.html",
+      "sha256": "12190950878ebbe0162025ee66dd0596ced1722be040d4ebcdd902f00c126dbc"
+    },
+    "demos/a2ui-demo/src/main.ts": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/main.ts",
+      "sha256": "ff6df9df43fbd343c93e928ccdf7df2457510b1761fd1e38aa3a346279195158"
+    },
+    "demos/a2ui-demo/src/styles.css": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/src/styles.css",
+      "sha256": "d29d132173d074ac4566da839eba0596b0b0a4b80f42f98abb4efe093f0d2713",
+      "adaptedSha256": "2dd64891a799546fdc16c6fc89eff8b280e00c64acc91a24fdd2f6930148594d"
+    },
+    "demos/a2ui-demo/tsconfig.app.json": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/tsconfig.app.json",
+      "sha256": "7672ddde9026f7b661fd154853b5197dd0e504e38368f012964c049fd9688324"
+    },
+    "demos/a2ui-demo/tsconfig.spec.json": {
+      "sourceId": "a2ui-demo",
+      "source": "projects/a2ui-demo/tsconfig.spec.json",
+      "sha256": "19677b2d9705a2bb90eba3e6f0906ec1e89cd32244d01abd6508e9042ca58880"
+    }
+  },
+  "additionalSources": {
+    "a2ui-demo": {
+      "repository": "https://github.com/angular-architects/flights42",
+      "ref": "AGU-a2ui-solution",
+      "commit": "b8f37069e9c71a5f3280f3837dbabb97977c9326"
     }
   }
 }
