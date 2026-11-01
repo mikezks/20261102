@@ -1,9 +1,11 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { type AngularToolCall, type ToolRenderer } from '@copilotkit/angular';
 import { MarkdownComponent } from 'ngx-markdown';
 import { z } from 'zod/v3';
 
 import { createComponentTool } from '../../util-copilotkit/tool-definition';
+import { VoiceService } from '../voice/voice-service';
+import { WIDGET_ID } from './widget-id';
 
 const messageWidgetSchema = z.object({
   text: z.string().describe('Markdown-formatted text to show to the user'),
@@ -25,6 +27,29 @@ export class MessageWidget implements ToolRenderer<MessageWidgetArgs> {
   readonly toolCall = input.required<AngularToolCall<MessageWidgetArgs>>();
 
   protected readonly text = computed(() => this.toolCall().args.text ?? '');
+
+  private readonly voice = inject(VoiceService);
+  private readonly widgetId = inject(WIDGET_ID, { optional: true });
+
+  constructor() {
+    // Read the widget's text aloud once it stops changing (widget args stream
+    // in incrementally, so we debounce to avoid reading partial content).
+    // De-duplication lives in the service, keyed by the stable widget id, so
+    // re-created widgets don't repeat.
+    effect((onCleanup) => {
+      const text = this.text();
+      if (!this.voice.readingEnabled() || this.toolCall().status !== 'complete') {
+        return;
+      }
+
+      const handle = setTimeout(() => {
+        this.voice.readMessage(this.widgetId, text);
+      }, 600);
+      onCleanup(() => {
+        clearTimeout(handle);
+      });
+    });
+  }
 }
 
 export const messageWidget = createComponentTool({

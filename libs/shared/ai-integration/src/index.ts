@@ -12,4 +12,5 @@ export * from './lib/util-copilotkit/init-agent-store';
 export * from './lib/util-copilotkit/tool-definition';
 export * from './lib/util-copilotkit/widget-tool-names';
 export * from './lib/util-common/date-utils';
+export * from './lib/feature-voice/voice-page';
 export * from './lib/util-copilotkit/agent-run-state';

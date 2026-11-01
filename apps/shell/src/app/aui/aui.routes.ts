@@ -10,6 +10,10 @@ export default [
     children: [
       { path: 'booking', loadChildren: () => import('@flight-demo/domain/booking') },
       { path: 'checkin', loadChildren: () => import('@flight-demo/domain/checkin') },
+      {
+        path: 'voice',
+        loadComponent: () => import('@flight-demo/shared/ai-integration').then((m) => m.VoicePage),
+      },
     ],
   },
 ] satisfies Routes;

@@ -17,6 +17,11 @@ export const APP_NAVIGATION: NavigationConfig = [
     icon: 'checkin',
   },
   {
+    route: 'voice',
+    label: 'Voice & Dictation',
+    icon: 'mic',
+  },
+  {
     route: 'boarding',
     label: 'Boarding',
     icon: 'boarding',

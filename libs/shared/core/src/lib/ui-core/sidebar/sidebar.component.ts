@@ -46,6 +46,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           </a>
         </li>
 
+        <li routerLinkActive="active">
+          <a routerLink="voice"
+            ><i class="icon icon-mic" aria-hidden="true"></i>
+            <p>Voice & Dictation</p></a
+          >
+        </li>
       </ul>
     </div>
   `,

@@ -93,6 +93,10 @@
   flex: 0 1 130px;
   min-width: 0;
 }
+.lang-select {
+  flex: 1 1 150px;
+  min-width: 0;
+}
 .icon-btn {
   display: grid;
   place-items: center;
@@ -165,6 +169,9 @@ textarea.composer-input {
   flex: 1 0 100%;
   font-size: 0.75rem;
   color: var(--muted);
+}
+.mic-btn .icon-mic {
+  font-size: 1rem;
 }
 @media (prefers-reduced-motion: reduce) {
   .ai-panel {

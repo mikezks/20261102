@@ -63,6 +63,47 @@
             <option value="execution">Execution</option>
           </select>
         }
+        @if (voice.languages().length) {
+          <select
+            class="form-control lang-select"
+            [ngModel]="voice.language()"
+            (ngModelChange)="setLanguage($event)"
+            name="voiceLanguage"
+            title="Language"
+            aria-label="Language"
+          >
+            @for (language of voice.languages(); track language) {
+              <option [value]="language">
+                {{ voice.describeLanguage(language) }}
+              </option>
+            }
+          </select>
+        }
+        <button
+          (click)="toggleReading()"
+          class="icon-btn"
+          [disabled]="!voice.readingSupported"
+          [attr.aria-pressed]="voice.readingEnabled()"
+          [title]="voice.readingEnabled() ? 'Disable read-aloud' : 'Enable read-aloud'"
+          [attr.aria-label]="voice.readingEnabled() ? 'Disable read-aloud' : 'Enable read-aloud'"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            aria-hidden="true"
+          >
+            <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+            @if (voice.readingEnabled()) {
+              <path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" />
+            } @else {
+              <path d="m16 9 6 6m0-6-6 6" />
+            }
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -78,6 +119,9 @@
 
     @if (error()) {
       <p role="alert" class="ai-error">{{ error() }}</p>
+    }
+    @if (voice.error()) {
+      <p role="alert" class="ai-error">{{ voice.error() }}</p>
     }
     <form id="ai-composer" class="ai-composer" autocomplete="off" (ngSubmit)="submit()">
       <div class="composer-inner">
@@ -102,6 +146,19 @@
           >
             Send
           </button>
+          @if (voice.dictationSupported) {
+            <button
+              type="button"
+              class="btn btn-primary voice-dictation mic-btn"
+              [attr.aria-pressed]="voice.dictating()"
+              (click)="toggleDictation()"
+              [title]="voice.dictating() ? 'Stop dictation' : 'Start dictation'"
+              [attr.aria-label]="voice.dictating() ? 'Stop dictation' : 'Start dictation'"
+            >
+              <i class="icon-mic" aria-hidden="true"></i>
+              {{ voice.dictating() ? 'Stop dictation' : 'Dictate' }}
+            </button>
+          }
           @if (isRunning()) {
             <button
               type="button"
