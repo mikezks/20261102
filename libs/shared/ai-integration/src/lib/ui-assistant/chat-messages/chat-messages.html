@@ -38,7 +38,18 @@
     </article>
   }
 
-  <!-- TODO: Render message.activity with copilot-activity. -->
+  @if (message.activity) {
+    @let activity = message.activity;
+    <article class="msg {{ message.variant }}">
+      <div class="avatar">{{ message.avatar }}</div>
+      <div>
+        <div class="bubble" [class.bubble--a2ui]="activity.isSurface">
+          <copilot-activity [message]="activity.message" [agentId]="agentId()" />
+        </div>
+        <div class="meta"></div>
+      </div>
+    </article>
+  }
 }
 
 @if (pending()) {

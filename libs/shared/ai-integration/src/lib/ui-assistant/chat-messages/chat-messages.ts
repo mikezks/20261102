@@ -2,6 +2,7 @@ import { type Interrupt } from '@ag-ui/core';
 import { Component, computed, input, type Signal, signal } from '@angular/core';
 import {
   type AgentStore,
+  CopilotActivity,
   type Message,
   RENDER_A2UI_TOOL_NAME,
   RenderToolCalls,
@@ -62,7 +63,7 @@ interface ChatMessageView {
 
 @Component({
   selector: 'app-chat-messages',
-  imports: [RenderToolCalls, MarkdownComponent],
+  imports: [RenderToolCalls, CopilotActivity, MarkdownComponent],
   templateUrl: './chat-messages.html',
   styleUrls: ['./chat-messages.css'],
 })

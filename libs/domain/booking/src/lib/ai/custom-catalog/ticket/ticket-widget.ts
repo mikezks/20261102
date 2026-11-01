@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { DatePipe } from '@angular/common';
 import {
   AfterViewInit,
@@ -24,8 +23,7 @@ import { type TicketWidgetProps } from './ticket-widget-schema';
   styleUrl: './ticket-widget.css',
 })
 export class TicketWidget implements AfterViewInit {
-  // TODO: Replace the fallback with the required TicketWidgetProps input.
-  readonly props = signal({ ticket: { id: 0, from: '', to: '', date: '', delay: 0 } });
+  readonly props = input.required<TicketWidgetProps>();
 
   private readonly hostEl = inject(ElementRef<HTMLElement>);
   private readonly cdr = inject(ChangeDetectorRef);
