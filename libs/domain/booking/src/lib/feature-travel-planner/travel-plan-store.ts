@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { computed, Injectable } from '@angular/core';
 import { injectAgentStore } from '@copilotkit/angular';
 
@@ -9,7 +10,8 @@ import { TRAVEL_REFINEMENT_AGENT_ID } from './travel-refinement-agent-store';
 export class TravelPlanStore {
   private readonly agentStore = injectAgentStore(TRAVEL_REFINEMENT_AGENT_ID);
 
-  public readonly plan = computed(() => this.agentStore().state() as TravelPlan);
+  // TODO: Derive the plan from the agent state.
+  public readonly plan = computed<TravelPlan>(() => initialTravelPlan);
 
   public readonly summary = computed(() => this.plan().summary);
   public readonly flights = computed(() => this.plan().flights);
@@ -19,14 +21,10 @@ export class TravelPlanStore {
     // In case the model mixed up the order
     const sortedHotels = sortHotelsByRoute(plan.hotels, plan.flights);
 
-    this.agentStore().agent.setState({
-      summary: plan.summary,
-      flights: plan.flights,
-      hotels: sortedHotels,
-    });
+    // TODO: Write summary, flights and sortedHotels to the agent state.
   }
 
   public clear(): void {
-    this.agentStore().agent.setState(initialTravelPlan);
+    // TODO: Reset the agent state to initialTravelPlan.
   }
 }

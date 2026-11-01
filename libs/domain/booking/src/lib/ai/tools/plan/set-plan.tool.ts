@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { inject } from '@angular/core';
 import { z } from 'zod/v3';
 
@@ -29,8 +30,7 @@ export const setPlanTool = createFrontendTool({
       .describe('Ordered steps; the array order IS the execution order.'),
   }),
   handler: async (args) => {
-    const store = inject(PlanStore);
-    store.setPlan(args);
-    return { stepCount: args.steps.length };
+    // TODO: Replace the plan in PlanStore and return its step count.
+    throw new Error('Complete the setPlan handler before using this tool.');
   },
 });

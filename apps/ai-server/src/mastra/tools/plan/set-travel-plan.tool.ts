@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 
@@ -25,12 +26,7 @@ export const setTravelPlanTool = createTool({
       .describe('The complete list of hotels, one per overnight city.'),
   }),
   execute: async (args, context) => {
-    const current = await readPlan(context);
-    await commitPlan(context, {
-      summary: args.summary ?? current.summary,
-      flights: args.flights,
-      hotels: args.hotels,
-    });
-    return { flights: args.flights.length, hotels: args.hotels.length };
+    // TODO: Read the current plan, commit the replacement and return flight/hotel counts.
+    throw new Error('Complete setTravelPlan before using this tool.');
   },
 });

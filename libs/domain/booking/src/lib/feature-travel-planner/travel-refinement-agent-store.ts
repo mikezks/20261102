@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { inject } from '@angular/core';
 import { injectAgentStore } from '@copilotkit/angular';
 
@@ -18,7 +19,7 @@ export function injectTravelRefinementAgentStore() {
     url: inject(ConfigService).agUiUrlFor(TRAVEL_REFINEMENT_AGENT_ID),
     useServerMemory: true,
     components: [...widgets],
-    initialState: initialTravelPlan,
+    // TODO: Set initialState to initialTravelPlan.
   });
 
   return injectAgentStore(TRAVEL_REFINEMENT_AGENT_ID);

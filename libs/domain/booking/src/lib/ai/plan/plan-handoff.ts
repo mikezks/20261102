@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { inject, Injectable } from '@angular/core';
 import { CopilotKit, injectAgentStore } from '@copilotkit/angular';
 
@@ -15,7 +16,7 @@ export class PlanHandoff {
   async execute(plan: Plan): Promise<void> {
     this.ticketingChat.setMode('execution');
     const message = buildExecutionMessage(plan.steps);
-    await sendDeveloperMessage(this.copilotKit, this.executionStore, message);
+    // TODO: Send message to the execution agent as a developer message.
   }
 }
 

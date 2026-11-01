@@ -4,7 +4,7 @@ import { addBooking, isBooked, removeBooking } from '../src/mastra/data/booked-f
 import { bookFlightTool } from '../src/mastra/tools/book-flight';
 import { cancelFlightTool } from '../src/mastra/tools/cancel-flight';
 
-test('books without suspension while approval is disabled and preserves booking safeguards', async () => {
+test('requires approval, respects decline and applies each approved demo mutation once', async () => {
   const original = globalThis.fetch;
   globalThis.fetch = async () =>
     Response.json({
@@ -28,9 +28,8 @@ test('books without suspension while approval is disabled and preserves booking 
       },
     };
     await book({ flightId: 901 }, context as unknown as Parameters<typeof book>[1]);
-    assert.equal(suspended, undefined);
-    assert.equal(isBooked(901), true);
-    removeBooking(901);
+    assert.ok(suspended);
+    assert.equal(isBooked(901), false);
     await book({ flightId: 901 }, {
       agent: { resumeData: { selection: 'creditCard' } },
     } as Parameters<typeof book>[1]);
