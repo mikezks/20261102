@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
 import { inject } from '@angular/core';
 import { injectAgentStore } from '@copilotkit/angular';
 import { USE_ACTION_CARDS } from '@flight-demo/shared/ai-integration/config';
@@ -19,7 +18,7 @@ import { getCurrentBasketTool } from './tools/get-current-basket.tool';
 import { getLoadedFlightsTool } from './tools/get-loaded-flights.tool';
 import { toggleFlightSelectionTool } from './tools/toggle-flight-selection.tool';
 
-const widgets = [messageWidget, hotelWidget]; // TODO: Add flightWidget.
+const widgets = [messageWidget, flightWidget, hotelWidget];
 
 const actionCards = USE_ACTION_CARDS ? [bookFlightActionCard, cancelFlightActionCard] : [];
 
@@ -29,7 +28,7 @@ export function injectTicketingAgentStore() {
     url: inject(ConfigService).agUiUrlFor(TICKETING_AGENT_ID),
     useServerMemory: true,
     frontendTools: [
-      // TODO: Register findFlightsTool.
+      findFlightsTool,
       getLoadedFlightsTool,
       toggleFlightSelectionTool,
       getCurrentBasketTool,

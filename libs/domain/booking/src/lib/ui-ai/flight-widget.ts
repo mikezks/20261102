@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars -- Prepared imports are used by the exercise. */
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { type AngularToolCall, type ToolRenderer } from '@copilotkit/angular';
 import { z } from 'zod/v3';
@@ -24,15 +23,11 @@ const flightSchema = z.object({
 });
 
 const flightWidgetSchema = z.object({
-  // TODO: Describe flight and status using flightSchema and an enum.
+  flight: flightSchema,
+  status: z.enum(['booked', 'other', 'none']).describe('Status of the flight'),
 });
 
 type FlightWidgetArgs = z.infer<typeof flightWidgetSchema>;
-
-@Component({ selector: 'app-empty-flight-widget', template: '' })
-export class EmptyFlightWidget implements ToolRenderer<Record<string, unknown>> {
-  readonly toolCall = input.required<AngularToolCall<Record<string, unknown>>>();
-}
 
 @Component({
   selector: 'app-flight-widget',
@@ -67,14 +62,10 @@ export class EmptyFlightWidget implements ToolRenderer<Record<string, unknown>> 
     }
   `,
 })
-export class FlightWidget {
-  // TODO: Implement ToolRenderer<FlightWidgetArgs>.
+export class FlightWidget implements ToolRenderer<FlightWidgetArgs> {
   protected readonly booking = inject(BookingStore);
 
-  // TODO: Replace the preview signal with the required CopilotKit input.
-  readonly toolCall = signal<{
-    args: { flight?: z.infer<typeof flightSchema>; status?: 'booked' | 'other' | 'none' };
-  }>({ args: {} });
+  readonly toolCall = input.required<AngularToolCall<FlightWidgetArgs>>();
 
   protected readonly flight = computed(() => {
     const flight = this.toolCall().args.flight;
@@ -95,8 +86,7 @@ export const flightWidget = createComponentTool({
     For booked flights use status: "booked"; for search/current flights use status: "other".
     Use status: "none" for purely informational proposals (e.g. flight suggestions in a chat) that must NOT show any action button.
   `,
-  // TODO: Register flightWidgetSchema and FlightWidget, then remove EmptyFlightWidget.
-  parameters: z.object({}),
-  component: EmptyFlightWidget,
+  parameters: flightWidgetSchema,
+  component: FlightWidget,
   followUp: false,
 });

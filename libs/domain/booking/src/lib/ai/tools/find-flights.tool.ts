@@ -1,6 +1,9 @@
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { z } from 'zod/v3';
 
 import { createFrontendTool } from '@flight-demo/shared/ai-integration';
+import { FlightStore } from '../../data-ai/flight-store';
 
 export const findFlightsTool = createFrontendTool({
   name: 'findFlights',
@@ -14,10 +17,14 @@ export const findFlightsTool = createFrontendTool({
     - If needed, send at most one short text confirmation after the tool call has completed.
   `,
   parameters: z.object({
-    // TODO: Describe the departure and destination cities.
+    from: z.string().describe('Departure city'),
+    to: z.string().describe('Destination city'),
   }),
-  handler: async () => {
-    // TODO: Navigate to Flight Search, await the Booking Store search and return its result count.
-    return { ok: false };
+  handler: async ({ from, to }) => {
+    const store = inject(FlightStore);
+    const router = inject(Router);
+    await router.navigate(['/booking/flight/search']);
+    const flights = await store.search({ from, to, urgent: false });
+    return { ok: true, count: flights.length };
   },
 });

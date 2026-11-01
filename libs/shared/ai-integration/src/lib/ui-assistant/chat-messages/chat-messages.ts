@@ -4,6 +4,7 @@ import {
   type AgentStore,
   type Message,
   RENDER_A2UI_TOOL_NAME,
+  RenderToolCalls,
 } from '@copilotkit/angular';
 import { MarkdownComponent } from 'ngx-markdown';
 
@@ -61,7 +62,7 @@ interface ChatMessageView {
 
 @Component({
   selector: 'app-chat-messages',
-  imports: [MarkdownComponent],
+  imports: [RenderToolCalls, MarkdownComponent],
   templateUrl: './chat-messages.html',
   styleUrls: ['./chat-messages.css'],
 })
