@@ -48,7 +48,7 @@ type FlightWidgetArgs = z.infer<typeof flightWidgetSchema>;
         @if (status === 'booked') {
           <button
             class="btn btn-default"
-            [routerLink]="['/checkin/passenger/search', { ticketId: flight.id }]"
+            [routerLink]="['/checkin/document', { ticketId: flight.id }]"
           >
             Check in
           </button>

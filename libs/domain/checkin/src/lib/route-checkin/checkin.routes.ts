@@ -1,3 +1,4 @@
+import { CheckinChatService } from '../feature-document/checkin-chat-service';
 import { Routes } from '@angular/router';
 import { MilesComponent } from '../feature-miles/miles/miles.component';
 import { PassengerEditComponent } from '../feature-passenger/passenger-edit/passenger-edit.component';
@@ -29,6 +30,11 @@ export const CHECKIN_ROUTES: Routes = [
             component: PassengerEditComponent,
           },
         ],
+      },
+      {
+        path: 'document',
+        providers: [CheckinChatService],
+        loadComponent: () => import('../feature-document/checkin-page').then((m) => m.CheckinPage),
       },
       {
         path: 'miles',

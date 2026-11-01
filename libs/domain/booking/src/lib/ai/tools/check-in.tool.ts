@@ -13,7 +13,7 @@ export const checkInTool = createFrontendTool({
   followUp: false,
   handler: async ({ flightId }) => {
     const router = inject(Router);
-    await router.navigate(['/checkin/passenger/search', { ticketId: flightId }]);
+    await router.navigate(['/checkin/document', { ticketId: flightId }]);
     return { ok: true };
   },
 });

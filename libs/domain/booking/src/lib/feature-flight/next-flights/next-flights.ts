@@ -45,7 +45,7 @@ import { FlightCardComponent } from '../../ui-flight/flight-card/flight-card.com
             <button
               type="button"
               class="btn btn-default btn-sm"
-              [routerLink]="['/checkin/passenger/search', { ticketId: flight.id }]"
+              [routerLink]="['/checkin/document', { ticketId: flight.id }]"
             >
               Check in
             </button>
