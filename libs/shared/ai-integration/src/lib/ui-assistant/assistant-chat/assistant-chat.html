@@ -50,6 +50,20 @@
           />
         </svg>
       </button>
+      <div class="ai-actions">
+        @if (showModeSelector()) {
+          <select
+            class="form-control mode-select"
+            #modeSelect
+            aria-label="Agent mode"
+            [value]="mode()"
+            (change)="setMode(modeSelect.value)"
+          >
+            <option value="plan">Plan</option>
+            <option value="execution">Execution</option>
+          </select>
+        }
+      </div>
     </header>
 
     <section id="ai-messages" class="ai-messages" aria-live="polite" #messagesContainer>

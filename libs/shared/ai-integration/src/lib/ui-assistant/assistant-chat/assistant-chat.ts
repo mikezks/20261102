@@ -15,6 +15,7 @@ import { agentError } from '../../util-copilotkit/agent-run-state';
 import { FormsModule } from '@angular/forms';
 import { type AgentStore, CopilotKit, type Message } from '@copilotkit/angular';
 
+import { AgentModeService } from '../../util-common/agent-mode-service';
 import { getAgentMessages, sendMessage, stop } from '../../util-copilotkit/agent-store-helper';
 import { ChatMessages } from '../chat-messages/chat-messages';
 import { ChatRegistry } from '../chat-registry';
@@ -30,7 +31,10 @@ const DEFAULT_GREETING = 'Hi! How can I help you?';
 export class AssistantChat {
   readonly initiallyOpen = input(false);
   private chatRegistry = inject(ChatRegistry);
+  private agentMode = inject(AgentModeService);
   private copilotKit = inject(CopilotKit);
+
+  protected mode = this.agentMode.mode;
 
   private composerInput = viewChild<ElementRef<HTMLTextAreaElement>>('composerInput');
   private messagesContainer = viewChild<ElementRef<HTMLDivElement>>('messagesContainer');
@@ -42,6 +46,7 @@ export class AssistantChat {
   protected readonly panelVisible = signal(false);
   protected readonly message = signal('');
   protected readonly greeting = signal<string>(DEFAULT_GREETING);
+  protected readonly showModeSelector = signal(true);
 
   protected readonly store = signal<Signal<AgentStore> | undefined>(undefined);
   protected readonly agentId = signal<string | undefined>(undefined);
@@ -65,6 +70,7 @@ export class AssistantChat {
       this.store.set(chatInfo.store);
       this.agentId.set(chatInfo.agentId);
       this.greeting.set(chatInfo.greeting ?? DEFAULT_GREETING);
+      this.showModeSelector.set(chatInfo.showModeSelector ?? true);
     });
 
     this.chatRegistry.openRequested.pipe(takeUntilDestroyed()).subscribe(() => this.open());
@@ -125,5 +131,9 @@ export class AssistantChat {
     if (store) {
       stop(store);
     }
+  }
+
+  protected setMode(mode: string): void {
+    if (mode === 'plan' || mode === 'execution') this.chatRegistry.requestMode(mode);
   }
 }
